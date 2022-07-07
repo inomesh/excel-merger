@@ -7,7 +7,8 @@ function filter(data = []) {
   const raw = body.map((item) => {
     const instance = {};
     for (const key in item) {
-      instance[header[key]] = item[key] || "";
+      instance[header[key]] =
+        item[key] === null && item[key] === undefined ? "" : item[key];
     }
     return instance;
   });
