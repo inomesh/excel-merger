@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convertor</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-xs">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 mb-5">
+                <label for="master_file">Select Master File</label>
+                <input
+                  style="float: right"
+                  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                  type="file"
+                  name="master"
+                  id="master_file"
+                />
+              </div>
+              <div class="col-12 mb-5">
+                <label for="append_files">Select Append Files</label>
+                <input
+                  style="float: right"
+                  accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                  type="file"
+                  name="append"
+                  multiple
+                  id="append_files"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn w-100 btn-primary">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <!-- <script>
+    const ACCEPTED_FILE_TYPES = [
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ];
+
+    function handleChange(id) {
+      const input = document.querySelector(`#${id}`);
+      const files = [...input.files];
+      files.map((file) => {
+        if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
+          alert("Only excel files are allowed");
+          window.location.reload();
+          return;
+        }
+      });
+    }
+
+    function submit() {
+      const masterFile = document.querySelector("#master_file");
+      const append_files = document.querySelector("#append_files");
+      if (masterFile.files.length && append_files.files.length) {
+        send([...masterFile.files, ...append_files.files]);
+      }
+    }
+
+    function send(files = []) {
+      const url = "http://localhost:8000/upload";
+      const formData = new FormData();
+
+      files.map((file, i) => {
+        if (i === 0) {
+          formData.append("master", file);
+        } else {
+          formData.append("append", file);
+        }
+      });
+
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .catch((error) => {
+          console.error("error from server: ", error.message);
+        });
+    }
+  </script> -->
+</html>
