@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Convertor</title>
+    <title>Techmusk-Utility-tool</title>
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -14,19 +14,53 @@
     />
 
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300&display=swap");
       body {
+        font-family: Roboto,Verdana, Geneva, Tahoma, sans-serif;
         height: 100vh;
         width: 100%;
-        display: flex;
+        display: block;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
+        overflow-x: hidden;
         background: rebeccapurple;
       }
+      header{
+        margin:30px;
+        height:150px;
+      }
+     h1, h3
+      {
+        color: white;
+       
+      }
+      .main{
+        height: 600px;
+         }
+        .service{
+          margin-top: 50px;
+          color: white;
+          height: 400px;
+        }
+        footer{
+          margin-top: 50px;
+          background-color: #fff !important;
+        }
     </style>
   </head>
   <body>
-    <div class="container-xs">
+    <header class="mb-auto center">
+    <div class="row">
+      <div class="col-2">  <img src="https://www.techmusk.in/assets/img/hero-logo.png">   </div>
+    
+     <div class="col-10">
+     <center> <h1>Techmusk-Utility-tool</h1></center>
+        <marquee> <h3>Techmusk Excel merger Utility</h3></marquee>
+     </div>
+     </div>
+    </header>
+    <div class="main">
+    <div class="container">
       <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="card">
           <div class="card-body">
@@ -62,53 +96,64 @@
         </div>
       </form>
     </div>
+
+  <div class="container">
+    <div class="service">
+    <h4>Services offer</h4><hr>
+    <table class="table table-sm table-light">
+      <thead>
+        <tr>
+          <th>Development</th>   
+          <th>Security</th>
+          <th>Product</th>
+          <th>Training</th>
+        </tr>
+      </thead>
+      <tr class="table-primary">
+        <td>Website Development</td>
+        <td>Antivirus</td>
+        <td>Gate Entry Software</td>
+        <td>Full Stack Devlopment</td>
+      </tr>
+      <tr class="table-primary">
+        <td>Mobile App Development</td>
+        <td>DLP Solution</td>
+        <td>Customize ERP Software</td>
+        <td>MERN StackDevlopment</td>
+      </tr>
+      <tr class="table-primary">
+        <td>Utility software Development</td>
+        <td>Email Security</td>
+        <td>Digital Profile</td>
+        <td>E-Accounting</td>
+      </tr>
+      <tr class="table-primary">
+        <td>E-commerce website</td>
+        <td>Encryption</td>
+        <td>SEO/ Digital marketing</td>
+        <td>Computer Programming Language</td>
+      </tr>
+      <tr class="table-primary">
+        <td>Game Development</td>
+        <td>Firewall</td>
+        <td>Poster Desiging</td>
+        <td>Develpment tools</td>
+      </tr>
+    </table>
+    <h4>contact us:</h4>
+    <h2>Deepak Jha - +91-9654868012, +91-9555771006</h2></br> 
+    <h4>Email - <a class="text-white" href='mailto:info@techmusk.in'>info@techmusk.in</a>, <a class="text-white" href="mailto:techmuskpvt@gmail.com">techmuskpvt@gmail.com</a>
+    </h4>
+  </div>
+</div>
+<footer class="text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3">
+    © 2022 Copyright:
+    <a class="text-dark" href="https://techmusk.in/">Techmusk<img src="https://www.techmusk.in/assets/img/favicon.png"></a>
+  </div>
+  <!-- Copyright -->
+</footer>
   </body>
 
-  <!-- <script>
-    const ACCEPTED_FILE_TYPES = [
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    ];
-
-    function handleChange(id) {
-      const input = document.querySelector(`#${id}`);
-      const files = [...input.files];
-      files.map((file) => {
-        if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
-          alert("Only excel files are allowed");
-          window.location.reload();
-          return;
-        }
-      });
-    }
-
-    function submit() {
-      const masterFile = document.querySelector("#master_file");
-      const append_files = document.querySelector("#append_files");
-      if (masterFile.files.length && append_files.files.length) {
-        send([...masterFile.files, ...append_files.files]);
-      }
-    }
-
-    function send(files = []) {
-      const url = "http://localhost:8000/upload";
-      const formData = new FormData();
-
-      files.map((file, i) => {
-        if (i === 0) {
-          formData.append("master", file);
-        } else {
-          formData.append("append", file);
-        }
-      });
-
-      fetch(url, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .catch((error) => {
-          console.error("error from server: ", error.message);
-        });
-    }
-  </script> -->
 </html>
