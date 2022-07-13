@@ -4,6 +4,7 @@ const multer = require("multer");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+const uuid = require("uuid");
 const json2xls = require("json2xls");
 const { ExcToJSON } = require("./helpers");
 
@@ -28,7 +29,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const extn = file.originalname.split(".").reverse()[0];
-    cb(null, `${"doc-" + Date.now()}.${extn}`);
+    cb(null, `${uuid.v4()}.${extn}`);
   },
 });
 
