@@ -17,6 +17,10 @@ function handleMakeEqual(arr) {
   return output;
 }
 
+function handleDigit(num) {
+  return String(num).length === 1 ? `0${num}` : num;
+}
+
 function filter(data = []) {
   const arr = handleMakeEqual(data);
   const header = arr[0];
@@ -35,6 +39,7 @@ function filter(data = []) {
         instance[newInstanceKey] = item[key];
       }
 
+      // manipulating date
       if (
         /Invoice Date/gi.test(newInstanceKey) ||
         /Cancellation Date/gi.test(newInstanceKey)
@@ -45,7 +50,13 @@ function filter(data = []) {
         } else if (new Date(item[key]) == "Invalid Date") {
           instance[newInstanceKey] = item[key];
         } else {
-          instance[newInstanceKey] = new Date(item[key]).toLocaleDateString();
+          let date = new Date(item[key]).getDate();
+          let month = new Date(item[key]).getMonth();
+          let year = new Date(item[key]).getFullYear();
+          // instance[newInstanceKey] = new Date(item[key]).toLocaleDateString();
+          instance[newInstanceKey] = `${handleDigit(date)}-${handleDigit(
+            month
+          )}-${handleDigit(year)}`;
         }
       } else if (item[key] || item[key] === 0) {
         // item[key] has a zero as value or some value
@@ -53,6 +64,20 @@ function filter(data = []) {
       } else {
         // item[key] is null or undefined
         instance[newInstanceKey] = "";
+      }
+
+      // manipulating voucher type key
+      if (
+        instance["Invoice Number"] && // Invoice Number
+        instance["Invoice Number"].trim().length > 0 &&
+        /Voucher Type/gi.test(newInstanceKey) &&
+        (!instance[newInstanceKey] ||
+          instance[newInstanceKey]?.trim().length === 0)
+      ) {
+        instance[newInstanceKey] = `${instance["Invoice Number"].substring(
+          0,
+          3
+        )} INVOICE`;
       }
     }
     return instance;
