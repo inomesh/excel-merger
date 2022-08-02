@@ -95,6 +95,16 @@ function filter(data = []) {
           0,
           3
         )} INVOICE`;
+      } // Replacing "Total Invoice Amount (Rounded Off)" null values with "Total Invoice Amount" value
+
+      if ("Total Invoice Amount" === newInstanceKey) {
+        instance["Total Invoice Amount (Rounded Off)"] = Math.round(
+          instance["Total Invoice Amount"]
+        );
+      }
+
+      if ("HSNCode" === newInstanceKey && !Boolean(instance["Part HSN Code"])) {
+        instance["Part HSN Code"] = instance["HSNCode"];
       }
     }
 
